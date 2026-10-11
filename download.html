@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保卫张莉 - 下载预约</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav>
+        <div class="logo">保卫张莉</div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="download.html">下载预约</a></li>
+                <li><a href="gxrz.html">更新日志</a></li>
+            </ul>
+            <button id="theme-toggle" title="切换亮暗色">🌙</button>
+        </div>
+    </nav>
+
+    <!-- 下载内容 -->
+    <div class="container">
+        <h2 class="page-title">游戏下载</h2>
+        <div class="card">
+            <h3>🚀 游戏目前处于开发阶段</h3>
+            <p style="color: var(--text-color); opacity: 0.8; margin-bottom: 40px; font-size: 18px;">点击下方按钮预约游戏，第一时间获取上线通知，还能领取专属预约大礼包！</p>
+            <button class="btn" onclick="alert('预约成功！感谢支持张莉！')">立即预约</button>
+        </div>
+    </div>
+
+    <!-- 主题切换逻辑 -->
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme');
+        
+        if (currentTheme === 'dark' || (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.body.classList.add('dark-mode');
+            toggleBtn.textContent = '☀️';
+        } else {
+            toggleBtn.textContent = '🌙';
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            toggleBtn.textContent = isDark ? '☀️' : '🌙';
+        });
+    </script>
+
+</body>
+</html>
